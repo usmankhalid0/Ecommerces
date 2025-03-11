@@ -9,6 +9,7 @@ $(document).ready(function () {
             { data: 'email', name: 'email', title: 'email' },
             { data: 'created_at', name: 'created_at', title: 'created' },
             { data: 'action', name: 'action', orderable: false, searchable: false },
+            { data: 'checkbox', name: 'checkbox', orderable: false, searchable: false },
         ]
 
     });

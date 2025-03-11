@@ -18,17 +18,21 @@ class UserController extends Controller
     {
         if ($request->ajax()) {
             $data = User::all();
-            return DataTables::of($data) ->addIndexColumn()
-            ->addColumn('action', function($row){
-                $editBtn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-primary btn-sm editBtn">Edit</a>';
-            $deleteBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'"class="btn btn-danger btn-sm deleteBtn">Delete</a>';
-            $blockBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'" class="btn btn-warning btn-sm blockBtn">Block</a>';
-            $unblockBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'" class="btn btn-warning btn-sm blockBtn disabled">UnBlock</a>';
-            
-            return $editBtn . ' ' . $deleteBtn . ' ' . $blockBtn .' '.$unblockBtn;
-            })
-            ->rawColumns(['action'])->make(true);
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $editBtn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-primary btn-sm editBtn">Edit</a>';
+                    $deleteBtn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-danger btn-sm deleteBtn">Delete</a>';
+                    $blockBtn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-warning btn-sm blockBtn">Block</a>';
+                    $unblockBtn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-warning btn-sm blockBtn disabled">UnBlock</a>';
+        
+                    return $editBtn . ' ' . $deleteBtn . ' ' . $blockBtn . ' ' . $unblockBtn;
+                })
+                ->addColumn('checkbox', '<input type="checkbox" name="users_checkbox[]" class="users_checkbox" value="{{$id}}" />')
+                ->rawColumns(['checkbox','action'])
+                ->make(true);
         }
+        
     return view('users.index');
     }
     /**
