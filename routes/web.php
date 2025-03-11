@@ -24,6 +24,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/email', [App\Http\Controllers\HomeController::class, 'email'])->name('email');
 
 Route::resource('user', UserController::class);
 Route::resource('product', ProductController::class);

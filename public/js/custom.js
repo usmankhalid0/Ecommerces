@@ -74,3 +74,17 @@ $(document).ready(function () {
         });
     });
 });
+function fun() {
+    $.ajax({
+        url: "email",
+        type: "GET",
+        dataType: "json",  // Ensure JSON response
+        success: function (result) {
+            let emails = '';
+            for (let x = 0; x < result.length; x++) {
+                emails += '<option value="' + result[x] + '">' + result[x] + '</option>';
+            }
+            document.getElementById('browsers').innerHTML = emails;
+        }
+    });
+}

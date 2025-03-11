@@ -27,4 +27,9 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function email ()
+    {
+        $allEmail = User::whereNotIn('email', [auth()->user()->email])->pluck('email');
+        return   $allEmail ;      
+    }
 }
