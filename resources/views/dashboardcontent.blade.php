@@ -17,9 +17,6 @@
   <link href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" rel="stylesheet">
   <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    var sessionMsg = @json(session('msg')); // Convert PHP session to JavaScript variable
-</script>
   <script src="{{ asset('js/custom.js') }}"></script>
 </head>
 <style>

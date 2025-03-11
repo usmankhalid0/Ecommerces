@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User ;
+use App\Models\User_block ;
 use Illuminate\Support\Facades\Session ;
 use Yajra\DataTables\Facades\DataTables;
 class UserController extends Controller
@@ -22,7 +23,7 @@ class UserController extends Controller
                 $editBtn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-primary btn-sm editBtn">Edit</a>';
             $deleteBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'"class="btn btn-danger btn-sm deleteBtn">Delete</a>';
             $blockBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'" class="btn btn-warning btn-sm blockBtn">Block</a>';
-            $unblockBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'" class="btn btn-warning btn-sm blockBtn">UnBlock</a>';
+            $unblockBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'" class="btn btn-warning btn-sm blockBtn disabled">UnBlock</a>';
             
             return $editBtn . ' ' . $deleteBtn . ' ' . $blockBtn .' '.$unblockBtn;
             })
@@ -53,8 +54,12 @@ class UserController extends Controller
             'email'=>$request->email,
             'password'=>$request->password ,
         ]);
+        $result1 = User_block::create([
+            'blockStatus' => 0,
+            'user_id' => $result->id ,
+        ]);
         $flag = 0 ;
-        if($result)
+        if($result && $result1)
         {
             $flag = 1 ;
         //   return redirect()->back()->with('msg', 'Data entered successfully');
