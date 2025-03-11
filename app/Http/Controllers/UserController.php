@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User ;
+use Illuminate\Support\Facades\Session ;
 use Yajra\DataTables\Facades\DataTables;
 class UserController extends Controller
 {
@@ -19,10 +20,11 @@ class UserController extends Controller
             return DataTables::of($data) ->addIndexColumn()
             ->addColumn('action', function($row){
                 $editBtn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-primary btn-sm editBtn">Edit</a>';
-            $deleteBtn = '<a href="javascript:void(0)" class="btn btn-danger btn-sm deleteBtn">Delete</a>';
-            $blockBtn = '<a href="javascript:void(0)" class="btn btn-warning btn-sm blockBtn">Block</a>';
+            $deleteBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'"class="btn btn-danger btn-sm deleteBtn">Delete</a>';
+            $blockBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'" class="btn btn-warning btn-sm blockBtn">Block</a>';
+            $unblockBtn = '<a href="javascript:void(0)" data-id="'.$row->id .'" class="btn btn-warning btn-sm blockBtn">UnBlock</a>';
             
-            return $editBtn . ' ' . $deleteBtn . ' ' . $blockBtn;
+            return $editBtn . ' ' . $deleteBtn . ' ' . $blockBtn .' '.$unblockBtn;
             })
             ->rawColumns(['action'])->make(true);
         }
@@ -46,7 +48,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = User::create([
+            'name'=>$request->name ,
+            'email'=>$request->email,
+            'password'=>$request->password ,
+        ]);
+        $flag = 0 ;
+        if($result)
+        {
+            $flag = 1 ;
+        //   return redirect()->back()->with('msg', 'Data entered successfully');
+        }else{
+            $flag = 0 ;
+        //     return  redirect()->back()->with('msg', 'Data are entered successfully');
+        }
+        return $flag;
     }
 
     /**

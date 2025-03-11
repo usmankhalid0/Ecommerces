@@ -12,9 +12,44 @@ $(document).ready(function () {
         ]
 
     });
+    $("#newUser").submit(function (e) {
+        e.preventDefault();
+        var fd = $(this).serialize();
+        $.ajax({
+            url: 'user',
+            type: 'post',
+            data: fd,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRF token
+            },
+            success: function (res) {
+                $(".btn-close").click();
+                if (res) {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: "data enter successfully",
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                    });
+                } else {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'fail',
+                        title: "data is not entered",
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true,
+                    });
+                }
+            }
+        });
+    });
     $(document).on('click', '.editBtn', function () {
         let id = $(this).data('id');
-        console.log(id);
 
         $.ajax({
             url: "/user/" + id,
@@ -24,6 +59,16 @@ $(document).ready(function () {
                 $('#edit_name').val(response.name);
                 $('#edit_email').val(response.email);
                 $('#editModal').modal('show');
+            }
+        });
+    });
+    $(document).on('click', '.deleteBtn', function () {
+        let delid = $(this).data('id');
+        $.ajax({
+            url: "/user/" + delid,
+            type: "GET",
+            success: function (result) {
+
             }
         });
     });
