@@ -1,0 +1,91 @@
+.sidenav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #333;
+    overflow-y: auto;
+}
+
+.cnt {
+    margin-top: 100px;
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+    color: white;
+    background-color: #444;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.container1 {
+    margin-left: 30%;
+    margin-top: 10%;
+    margin-right: 15%;
+    border: 2px solid black;
+    padding: 20px;
+    background-color: rgb(34, 204, 133);
+}
+
+.content5 {
+    margin-left: 20%;
+}
+
+.inline-div {
+    display: inline-block;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    width: 250px;
+    height: 150px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.ceb {
+    margin-left: 50%;
+    margin-top: 9%;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.color1 {
+    background-color: rgb(211, 136, 39);
+}
+
+.color2 {
+    background-color: rgb(211, 39, 39);
+}
+
+.color3 {
+    background-color: rgb(159, 211, 39);
+}
+
+.color1 {
+    background-color: rgb(216, 20, 137);
+}
+
+.bolb {
+    font-size: large;
+}
+
+.right {
+    margin-left: 33%;
+}
