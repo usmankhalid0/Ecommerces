@@ -29,5 +29,6 @@ Route::resource('user', UserController::class);
 Route::resource('product', ProductController::class);
 Route::get('settingindex',[App\Http\Controllers\SettingController::class,'index'])->name('settingindex');
 Route::post('sendNotification',[App\Http\Controllers\SettingController::class,'userNotify'])->name('sendNotification');
+Route::post('sntusa',[App\Http\Controllers\SettingController::class,'sntusa'])->name('sntusa');
 Route::resource('shop', ShopController::class);
 
