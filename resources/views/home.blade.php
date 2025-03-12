@@ -8,7 +8,7 @@
             <a href="{{ route('product.index') }}"><div class="inline-div right color2"><b class="bolb">Products</b></div></a>
         </div>
         <div>
-            <a href="{{ route('setting.index') }}"><div class="inline-div color3 " ><b class="bolb">Setting</b></div></a>
+            <a href="{{ route('settingindex') }}"><div class="inline-div color3 " ><b class="bolb">Setting</b></div></a>
             <a href="{{ route('shop.index') }}"><div class="inline-div right color4"><b class="bolb">Shops</b></div></a>
         </div>
     </div>

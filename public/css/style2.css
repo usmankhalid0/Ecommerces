@@ -55,6 +55,10 @@
     margin-left: 20%;
 }
 
+.cntered {
+    margin-left: 35%;
+}
+
 .inline-div {
     display: inline-block;
     border: 1px solid black;

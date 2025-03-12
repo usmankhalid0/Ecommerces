@@ -73,6 +73,41 @@ $(document).ready(function () {
             }
         });
     });
+    $("#send_Notification").submit(function (e) {
+        e.preventDefault();
+        var fd = $(this).serialize();
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') // CSRF token
+            },
+            url: '/sendNotification',
+            type: 'POST',
+            data: fd,
+            success: function (res) {
+                if (res) {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: "Notification send successfully",
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true,
+                    });
+                } else {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'fail',
+                        title: "notification not send due to some issue",
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true,
+                    });
+                }
+            }
+        });
+    });
 });
 function fun() {
     $.ajax({

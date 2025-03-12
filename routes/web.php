@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\SettingController;
 use App\Http\Controllers\ShopController;
 
 
@@ -28,6 +27,7 @@ Route::get('/email', [App\Http\Controllers\HomeController::class, 'email'])->nam
 
 Route::resource('user', UserController::class);
 Route::resource('product', ProductController::class);
-Route::resource('setting', SettingController::class);
+Route::get('settingindex',[App\Http\Controllers\SettingController::class,'index'])->name('settingindex');
+Route::post('sendNotification',[App\Http\Controllers\SettingController::class,'userNotify'])->name('sendNotification');
 Route::resource('shop', ShopController::class);
 
