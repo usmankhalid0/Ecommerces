@@ -13,6 +13,20 @@ $(document).ready(function () {
         ]
 
     });
+    $('.product-data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: 'prdduct',
+        columns: [
+            { data: 'id', name: 'id', title: 'ID' },
+            { data: 'name', name: 'name', title: 'name' },
+            { data: 'email', name: 'email', title: 'email' },
+            { data: 'created_at', name: 'created_at', title: 'created' },
+            { data: 'action', name: 'action', orderable: false, searchable: false },
+            { data: 'checkbox', name: 'checkbox', orderable: false, searchable: false },
+        ]
+
+    });
     $("#newUser").submit(function (e) {
         e.preventDefault();
         var fd = $(this).serialize();

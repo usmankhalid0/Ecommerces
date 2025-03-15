@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\VendorToProjuct ;
+use App\Models\User;
 class ProductController extends Controller
 {
     /**
@@ -11,9 +12,15 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       return  view('products.index');
+        $users = User::whereHas('vendorProducts', function ($query) {
+            $query->whereHas('product')->whereHas('category');
+        })
+        ->with(['vendorProducts.product', 'vendorProducts.category'])
+        ->get();
+        $all = response()->json($users);
+        return $all ;
     }
 
     /**
